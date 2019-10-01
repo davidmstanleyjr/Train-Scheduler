@@ -39,13 +39,14 @@ $("#train-form").submit( function (event) {
     $("#frequency-input").val("");
 });
 //Puts firebase into HTML.
-database.ref().on("child_added", function (snapshot) {
-    var trainName = snapshot.val().trainName;
-    var destination = snapshot.val().destination;
-    var trainTime = snapshot.val().frequency;
+database.ref().on("child_added", function (childSnapshot) {
+    var trainName = childSnapshot.val().trainName;
+    var destination = childSnapshot.val().destination;
+    var trainTime = childSnapshot.val().trainTime;
+    var frequency = childSnapshot.val().frequency;
 
     //converts the times
-    var firstTrainTime = moment(trainTime, "HH:mm a").subtract(1, "years");
+    var firstTrainTime = moment(trainTime, "hh:mm a").subtract(1, "years");
     var nextTrainTime = moment().diff(firstTrainTime, "minutes");
     var timeRemaining = nextTrainTime % frequency;
     var timeUntilTheNextTrain = frequency - timeRemaining;
@@ -62,5 +63,6 @@ database.ref().on("child_added", function (snapshot) {
 
     $("#trains > tbody").append(trainSlots);
 
+    
 
 });
