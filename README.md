@@ -17,4 +17,3 @@ This is my train scheduler app that I built for my bootcamp. I'm utilizing fireb
 
 ![Screenshot 1](assets/images/snip1.PNG)
 ![Screenshot 2](assets/images/snip2.PNG)
-![Screenshot 3](assets/images/snip3.PNG)
